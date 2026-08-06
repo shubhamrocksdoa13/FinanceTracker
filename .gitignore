@@ -36,6 +36,12 @@ yarn-error.log*
 # vercel
 .vercel
 
+# neon CLI local context
+.neon
+
+# prisma generated client
+/src/generated/prisma
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
