@@ -4,7 +4,17 @@
 // jobs here are (a) satisfy the "has a fetch-handling service worker"
 // requirement for installability, and (b) make the app shell + a friendly
 // offline screen available when there's no connection.
-const CACHE_NAME = "wealth-tracker-shell-v1";
+//
+// Deliberately NOT cached: /_next/static/*. Those filenames are only
+// guaranteed content-hashed/immutable in production builds — Next's dev
+// server can reuse the same chunk URL across rebuilds, so cache-first there
+// means the browser keeps serving a stale JS/CSS bundle indefinitely
+// (surfaces as React hydration mismatches that a hard reload can't fix,
+// since the SW keeps re-serving the same cached copy). The offline fallback
+// below is fully self-contained inline HTML, so it doesn't need those
+// bundles anyway — only the icons/manifest (which the browser/OS reads
+// directly, not through the app bundle) are worth caching.
+const CACHE_NAME = "wealth-tracker-shell-v2";
 
 const PRECACHE_URLS = [
   "/manifest.webmanifest",
@@ -70,9 +80,7 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   const isShellAsset =
-    url.pathname.startsWith("/icons/") ||
-    url.pathname.startsWith("/_next/static/") ||
-    url.pathname === "/manifest.webmanifest";
+    url.pathname.startsWith("/icons/") || url.pathname === "/manifest.webmanifest";
 
   if (isShellAsset) {
     event.respondWith(

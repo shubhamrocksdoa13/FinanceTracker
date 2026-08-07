@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Chart tokens: recessive grid/axis ink, one step off the surface. */
+  --chart-grid: rgba(0, 0, 0, 0.08);
+  --chart-axis-text: rgba(23, 23, 23, 0.5);
 }
 
 @theme inline {
@@ -16,6 +19,8 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --chart-grid: rgba(255, 255, 255, 0.08);
+    --chart-axis-text: rgba(237, 237, 237, 0.5);
   }
 }
 

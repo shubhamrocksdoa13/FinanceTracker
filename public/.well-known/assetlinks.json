@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.shubhamanand.wealthtracker",
+      "sha256_cert_fingerprints": [
+        "2D:DE:23:FB:F8:B2:AD:2A:A9:92:D2:D9:4C:77:65:BB:98:AF:B6:AA:99:10:71:3C:EA:DA:4B:5F:35:85:91:6B"
+      ]
+    }
+  }
+]

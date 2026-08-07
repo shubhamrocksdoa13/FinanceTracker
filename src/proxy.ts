@@ -14,6 +14,6 @@ export const config = {
   // to decide installability, and the service worker itself needs to load
   // before there's ever a session.
   matcher: [
-    "/((?!api/auth|_next/static|_next/image|favicon.ico|manifest.webmanifest|icon|apple-icon|sw.js|icons/).*)",
+    "/((?!api/auth|_next/static|_next/image|favicon.ico|manifest.webmanifest|icon|apple-icon|sw.js|icons/|.well-known/).*)",
   ],
 };
